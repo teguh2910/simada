@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DetailTransactions extends Migration
+class CreateTableKomentar extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class DetailTransactions extends Migration
      */
     public function up()
     {
-        Schema::create('detail_transactions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('id_transaction');
-            $table->string('documents');
+        Schema::create('komentars', function (Blueprint $table) {
+            $table->increments('id_komentar');
+            $table->string('id_transactions');
+            $table->string('pic_k');
+            $table->string('npk_k');
+            $table->string('dep_k');
+            $table->string('komentar');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class DetailTransactions extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('komentars');
     }
 }

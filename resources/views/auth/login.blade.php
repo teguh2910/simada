@@ -78,7 +78,7 @@ height: 100%;
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
-      Copyright TTMI © 2022. All rights reserved.
+      Copyright Purchasing Aisin Indonesia © 2022. All rights reserved.
     </div>
     <!-- Copyright -->
   </div>

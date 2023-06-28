@@ -14,10 +14,18 @@ class Createtabletransaksi extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_transaction');
             $table->string('project');
-            $table->string('kinds_doc');
             $table->date('due_date');
+            $table->string('supplier');
+            $table->string('part_number');
+            $table->string('status');
+            $table->string('id_document');
+            $table->string('file');
+            $table->string('revise');
+            $table->string('pic');
+            $table->string('npk');
+            $table->string('is_need');
             $table->timestamps();
         });
     }
@@ -29,6 +37,6 @@ class Createtabletransaksi extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('transactions');
     }
 }

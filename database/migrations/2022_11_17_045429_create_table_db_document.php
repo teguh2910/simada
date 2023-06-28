@@ -28,6 +28,6 @@ class CreateTableDbDocument extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('documents');
     }
 }
