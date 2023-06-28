@@ -1,10 +1,19 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Build') { 
+        stage('Checkout') {
             steps {
-                sh 'docker-compose up -d' 
+                // Checkout your Laravel application code from version control
+                git 'https://github.com/teguh2910/simada.git'
             }
         }
+        
+        stage('Install Dependencies') {
+            steps {
+                // Install Laravel dependencies using Composer
+                sh 'composer install'
+            }
+        }        
     }
 }
