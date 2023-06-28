@@ -21,7 +21,7 @@ Thank you for considering contributing to the SIMADA Project!.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at teguh.yuhono@student.unsia.ac.id. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Teguh Yuhono at teguh.yuhono@student.unsia.ac.id. All security vulnerabilities will be promptly addressed.
 
 ## License
 
