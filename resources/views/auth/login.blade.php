@@ -1,4 +1,4 @@
-<title>SIMADA</title>
+<title>SIMADA APP</title>
 
 <!-- Font Awesome -->
 <link
