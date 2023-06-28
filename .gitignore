@@ -3,6 +3,7 @@
 /storage/*.key
 /vendor
 /.idea
+/docker-compose/mysql
 Homestead.json
 Homestead.yaml
 .env
