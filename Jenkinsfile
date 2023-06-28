@@ -1,19 +1,16 @@
 pipeline {
-    agent any
-    
+    agent {
+        docker {
+            image 'docker/compose:1.29.2'
+            args '--user root'
+        }
+    }
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                // Checkout your Laravel application code from version control
-                git 'https://github.com/teguh2910/simada.git'
+                sh 'docker-compose build app'
             }
         }
-        
-        stage('Install Dependencies') {
-            steps {
-                // Install Laravel dependencies using Composer
-                sh 'composer install'
-            }
-        }        
+        // Add more stages as needed
     }
 }
