@@ -1,6 +1,6 @@
 ## About SIMADA
 
-SIMADA adalah Aplikasi Sistem Management Dokumen Aisin Indonesia yang menyimpan serta mengelolo dokumen SPTT
+SIMADA adalah Aplikasi Sistem Management Dokumen yang menyimpan serta mengelola dokumen Pada Fase SPTT tiap Projek
 
 ## Instalation with Docker Compose
 
