@@ -1,5 +1,6 @@
 <?php
 Auth::routes();
+Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 Route::get('/create', 'HomeController@create');
 Route::post('/create', 'HomeController@create_store');
