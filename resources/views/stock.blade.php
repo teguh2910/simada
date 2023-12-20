@@ -46,6 +46,7 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
+                <center><h1>Update Per Bulan Desember 2023</h1></center>
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
