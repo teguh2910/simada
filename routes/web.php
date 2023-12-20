@@ -18,3 +18,6 @@ Route::get('/overdue', 'HomeController@overdue');
 Route::get('/del/{id}', 'HomeController@del');
 Route::get('/noneed/{id}', 'HomeController@noneed');
 Route::get('/dashboard', 'HomeController@dashboard');
+
+//new feature stock
+Route::get('/stock', 'stockController@index');

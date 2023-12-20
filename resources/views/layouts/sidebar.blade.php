@@ -20,6 +20,14 @@
             </a>
           </li> 
           <li class="nav-item">
+            <a href="{{asset('stock')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Stock                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{asset('create')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
