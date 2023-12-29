@@ -7,13 +7,13 @@ SIMADA adalah Aplikasi Sistem Management Dokumen yang menyimpan serta mengelola 
 1. git clone https://github.com/teguh2910/simada.git
 2. cd simada
 3. setting .env file
-4. docker-compose build app
-5. docker-compose up -d
-6. docker-compose exec app rm -rf vendor composer.lock
-7. docker-compose exec app composer install
-8. docker-compose exec app php artisan key:generate
-9. docker-compose exec app php artisan migrate
-10. docker-compose exec app php artisan db:seed
+4. docker compose build app
+5. docker compose up -d
+6. docker compose exec app composer install
+8. docker compose exec app php artisan key:generate
+9. docker compose exec app php artisan migrate
+10. docker compose exec app php artisan db:seed
+11. docker compose exec app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/public
 
 ## Jenkins Configuration
 1. docker run \
