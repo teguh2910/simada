@@ -3,8 +3,8 @@ services:
   app:
     build:
       args:
-        user: sammy
-        uid: 1000
+        user: root
+        uid: 0
       context: ./
       dockerfile: Dockerfile
     image: simada
