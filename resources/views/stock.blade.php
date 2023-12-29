@@ -14,29 +14,28 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+            <a href="{{asset('/upload_stock')}}" class="btn btn-md btn-primary">Upload Data</a>
             <h1 class="m-0">Rundown Stock</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Rundown Stock</li>
+              <li class="breadcrumb-item active">Rundown Stock</li>              
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    @php
-    $stok1 = 100;
-
-    // Define arrays for forecast, incoming, and gr values for each month
-    $forecasts = [10,10,10,10,10,10,10,10,10,10,10,10];
-    $incomings = [10,10,10,10,10,10,10,10,10,10,10,10];
-    $grs = [10,10,10,10,10,200,10,10,10,10,10,10];
-
-    $balances = [$stok1];
-    
-    @endphp 
+  @php
+      $stok1 = $data->stock;
+      // Define arrays for forecast, incoming, and gr values for each month
+      $forecasts = [$data->fc_4,$data->fc_5,$data->fc_6,$data->fc_7,$data->fc_8,$data->fc_9,$data->fc_10,$data->fc_11,$data->fc_12,$data->fc_1,$data->fc_2,$data->fc_3];
+      $incomings = [$data->incoming_supplier_4,$data->incoming_supplier_5,$data->incoming_supplier_6,$data->incoming_supplier_7,$data->incoming_supplier_8,$data->incoming_supplier_9,$data->incoming_supplier_10,$data->incoming_supplier_11,$data->incoming_supplier_12,$data->incoming_supplier_1,$data->incoming_supplier_2,$data->incoming_supplier_3];
+      $grs = [$data->gr_aisin_4,$data->gr_aisin_5,$data->gr_aisin_6,$data->gr_aisin_7,$data->gr_aisin_8,$data->gr_aisin_9,$data->gr_aisin_10,$data->gr_aisin_11,$data->gr_aisin_12,$data->gr_aisin_1,$data->gr_aisin_2,$data->gr_aisin_3];
+      $balances = [$stok1];
+                        
+  @endphp
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
@@ -60,12 +59,13 @@
                   </tr>
                   </thead>
                   <tbody>
+
                   <tr class="bg-default">
-                    <td>1</td>
-                    <td>Indospring</td>
-                    <td>41243-10480</td>
-                    <td>41243-10490</td>
-                    <td>Spring</td>
+                    <td>{{$data->id_stock}}</td>
+                    <td>{{$data->supplier}}</td>
+                    <td>{{$data->pn_before}}</td>
+                    <td>{{$data->pn_after}}</td>
+                    <td>{{$data->part_name}}</td>
                     <td>@php
                         for ($i = 0; $i < 12; $i++) {
                         $forecast = $forecasts[$i];
@@ -77,7 +77,6 @@
                         $balances[] = $balance;
 
                         //echo "Balance after month " . ($i + 4) . ": $balance\n";
-
                         // Check if balance is less than 0
                         if ($balance < 0) {
                             echo ($i + 4)."-2023";
@@ -86,61 +85,8 @@
                       }
                     @endphp</td>
                     <td><a href="" class="btn btn-sm btn-success">View Stock</a></td>                    
-                  </tr>
-                  <tr class="bg-default">
-                    <td>2</td>
-                    <td>Indospring</td>
-                    <td>41243-10410</td>
-                    <td>41243-10420</td>
-                    <td>Spring</td>
-                    <td>@php
-                        for ($i = 0; $i < 12; $i++) {
-                        $forecast = $forecasts[$i];
-                        $incoming = $incomings[$i];
-                        $gr = $grs[$i];
-                        $balance = $balances[$i] + $incoming - $gr;
-                        
-                        // Store the balance in an array for future reference
-                        $balances[] = $balance;
-
-                        //echo "Balance after month " . ($i + 4) . ": $balance\n";
-
-                        // Check if balance is less than 0
-                        if ($balance < 0) {
-                            echo ($i + 4)."-2023";
-                            break; // Exit the loop if balance is less than 0
-                        }
-                      }
-                    @endphp</td>
-                    <td><a href="" class="btn btn-sm btn-success">View Stock</a></td>                    
-                  </tr>
-                  <tr class="bg-default">
-                    <td>3</td>
-                    <td>Indospring</td>
-                    <td>41243-10400</td>
-                    <td>41243-10390</td>
-                    <td>Spring</td>
-                    <td>@php
-                        for ($i = 0; $i < 12; $i++) {
-                        $forecast = $forecasts[$i];
-                        $incoming = $incomings[$i];
-                        $gr = $grs[$i];
-                        $balance = $balances[$i] + $incoming - $gr;
-                        
-                        // Store the balance in an array for future reference
-                        $balances[] = $balance;
-
-                        //echo "Balance after month " . ($i + 4) . ": $balance\n";
-
-                        // Check if balance is less than 0
-                        if ($balance < 0) {
-                            echo ($i + 4)."-2023";
-                            break; // Exit the loop if balance is less than 0
-                        }
-                      }
-                    @endphp</td>
-                    <td><a href="" class="btn btn-sm btn-success">View Stock</a></td>                    
-                  </tr>
+                  </tr>                  
+                  
                   </tbody>                  
                 </table>
                 <hr>
@@ -172,65 +118,65 @@
                     </tr>
                     <tr>
                       @php
-                        $stok1=100;
-                        $forecast1=10;
-                        $incoming1=10;
-                        $gr1=10;
+                        $stok1=$data->stock;
+                        $forecast1=$data->fc_4;
+                        $incoming1=$data->incoming_supplier_4;
+                        $gr1=$data->gr_aisin_4;
                         $balance1=$stok1+$incoming1-$gr1;
 
-                        $forecast2=10;
-                        $incoming2=10;
-                        $gr2=10;
+                        $forecast2=$data->fc_5;
+                        $incoming2=$data->incoming_supplier_5;
+                        $gr2=$data->gr_aisin_5;
                         $balance2=$balance1+$incoming2-$gr2;
                         
-                        $forecast3=10;
-                        $incoming3=10;
-                        $gr3=10;
+                        $forecast3=$data->fc_6;
+                        $incoming3=$data->incoming_supplier_6;
+                        $gr3=$data->gr_aisin_6;
                         $balance3=$balance2+$incoming3-$gr3;
                         
-                        $forecast4=10;
-                        $incoming4=10;
-                        $gr4=10;
+                        $forecast4=$data->fc_7;
+                        $incoming4=$data->incoming_supplier_7;
+                        $gr4=$data->gr_aisin_7;
                         $balance4=$balance3+$incoming4-$gr4;
                         
-                        $forecast5=10;
-                        $incoming5=10;
-                        $gr5=10;
+                        $forecast5=$data->fc_8;
+                        $incoming5=$data->incoming_supplier_8;
+                        $gr5=$data->gr_aisin_8;
                         $balance5=$balance4+$incoming5-$gr5;
                         
-                        $forecast6=10;
-                        $incoming6=10;
-                        $gr6=200;
+                        $forecast6=$data->fc_9;
+                        $incoming6=$data->incoming_supplier_9;
+                        $gr6=$data->gr_aisin_9;
                         $balance6=$balance5+$incoming6-$gr6;
                         
-                        $forecast7=10;
-                        $incoming7=10;
-                        $gr7=10;
+                        $forecast7=$data->fc_10;
+                        $incoming7=$data->incoming_supplier_10;
+                        $gr7=$data->gr_aisin_10;
                         $balance7=$balance6+$incoming7-$gr7;
                         
-                        $forecast8=10;
-                        $incoming8=10;
-                        $gr8=10;
+                        $forecast8=$data->fc_11;
+                        $incoming8=$data->incoming_supplier_11;
+                        $gr8=$data->gr_aisin_11;
                         $balance8=$balance7+$incoming8-$gr8;
                         
-                        $forecast9=10;
-                        $incoming9=10;
-                        $gr9=10;
+                        $forecast9=$data->fc_12;
+                        $incoming9=$data->incoming_supplier_12;
+                        $gr9=$data->gr_aisin_12;
                         $balance9=$balance8+$incoming9-$gr9;
                         
-                        $forecast10=10;
-                        $incoming10=10;
-                        $gr10=10;
+                        $forecast10=$data->fc_1;
+                        $incoming10=$data->incoming_supplier_1;
+                        $gr10=$data->gr_aisin_1;
                         $balance10=$balance9+$incoming10-$gr10;
                         
-                        $forecast11=10;
-                        $incoming11=10;
-                        $gr11=10;
+                        $forecast11=$data->fc_2;
+                        $incoming11=$data->incoming_supplier_2;
+                        $gr11=$data->gr_aisin_2;
                         $balance11=$balance10+$incoming11-$gr11;
                         
-                        $forecast12=10;
-                        $incoming12=10;
-                        $gr12=10;
+                        $forecast12=$data->fc_3;
+                        $incoming12=$data->incoming_supplier_3;
+                        $gr12=$data->gr_aisin_3;
                         $balance12=$balance11+$incoming12-$gr12;
 
                       @endphp
