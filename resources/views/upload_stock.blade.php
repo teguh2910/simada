@@ -37,9 +37,17 @@
               {{ csrf_field() }}
                 <div class="card-body">                  
                   <div class="form-group">
-                    <label>File</label>
-                    <input type="file" name="data_excel" class="form-control">
+                    <label>Forecast</label>
+                    <input type="file" name="data_fc" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Incoming Supplier</label>
+                    <input type="file" name="incoming_supplier" class="form-control">
                   </div>                  
+                  <div class="form-group">
+                    <label>GR Aisin</label>
+                    <input type="file" name="gr_aisin" class="form-control">
+                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
