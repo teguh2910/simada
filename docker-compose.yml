@@ -17,7 +17,7 @@ services:
       - simada
 
   db:
-    image: mysql:8.0
+    image: mariadb:latest
     container_name: simada-db
     restart: unless-stopped
     environment:
@@ -28,7 +28,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ./docker-compose/mysql:/var/lib/mysql
+      - ./docker-compose/mariadb:/var/lib/mysql
     ports:
       - 33060:3306
     networks:
