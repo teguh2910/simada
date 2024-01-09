@@ -55,7 +55,7 @@
                     <th>P/N After</th>
                     <th>Part Name</th>
                     <th>Shortage</th>
-                    <th></th>                    
+                                        
                   </tr>
                   </thead>
                   <tbody>
@@ -84,20 +84,11 @@
                         }
                       }
                     @endphp</td>
-                    <td><a href="" class="btn btn-sm btn-success">View Stock</a></td>                    
+                                        
                   </tr>                  
                   
                   </tbody>                  
                 </table>
-                <hr>
-                <form action="">
-                <label for="">Tahun</label>
-                <select name="tahun" class="">
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                </select>
-                <input type="submit" value="view">
-                </form>
                 <hr>
                 <table id="" class="table table-bordered table-striped">
                   <thead>

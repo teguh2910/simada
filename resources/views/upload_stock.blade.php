@@ -37,6 +37,10 @@
               {{ csrf_field() }}
                 <div class="card-body">                  
                   <div class="form-group">
+                    <label>Stock (first Time)</label>
+                    <input type="file" name="stock" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>Forecast</label>
                     <input type="file" name="data_fc" class="form-control">
                   </div>
