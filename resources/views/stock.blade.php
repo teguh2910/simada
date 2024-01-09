@@ -113,62 +113,62 @@
                         $forecast1=$data->fc_4;
                         $incoming1=$data->incoming_supplier_4;
                         $gr1=$data->gr_aisin_4;
-                        $balance1=$stok1+$incoming1-$gr1;
+                        $balance1=$stok1+$incoming1-$forecast1;
 
                         $forecast2=$data->fc_5;
                         $incoming2=$data->incoming_supplier_5;
                         $gr2=$data->gr_aisin_5;
-                        $balance2=$balance1+$incoming2-$gr2;
+                        $balance2=$balance1+$incoming2-$forecast2;
                         
                         $forecast3=$data->fc_6;
                         $incoming3=$data->incoming_supplier_6;
                         $gr3=$data->gr_aisin_6;
-                        $balance3=$balance2+$incoming3-$gr3;
+                        $balance3=$balance2+$incoming3-$forecast3;
                         
                         $forecast4=$data->fc_7;
                         $incoming4=$data->incoming_supplier_7;
                         $gr4=$data->gr_aisin_7;
-                        $balance4=$balance3+$incoming4-$gr4;
+                        $balance4=$balance3+$incoming4-$forecast4;
                         
                         $forecast5=$data->fc_8;
                         $incoming5=$data->incoming_supplier_8;
                         $gr5=$data->gr_aisin_8;
-                        $balance5=$balance4+$incoming5-$gr5;
+                        $balance5=$balance4+$incoming5-$forecast5;
                         
                         $forecast6=$data->fc_9;
                         $incoming6=$data->incoming_supplier_9;
                         $gr6=$data->gr_aisin_9;
-                        $balance6=$balance5+$incoming6-$gr6;
+                        $balance6=$balance5+$incoming6-$forecast6;
                         
                         $forecast7=$data->fc_10;
                         $incoming7=$data->incoming_supplier_10;
                         $gr7=$data->gr_aisin_10;
-                        $balance7=$balance6+$incoming7-$gr7;
+                        $balance7=$balance6+$incoming7-$forecast7;
                         
                         $forecast8=$data->fc_11;
                         $incoming8=$data->incoming_supplier_11;
                         $gr8=$data->gr_aisin_11;
-                        $balance8=$balance7+$incoming8-$gr8;
+                        $balance8=$balance7+$incoming8-$forecast8;
                         
                         $forecast9=$data->fc_12;
                         $incoming9=$data->incoming_supplier_12;
                         $gr9=$data->gr_aisin_12;
-                        $balance9=$balance8+$incoming9-$gr9;
+                        $balance9=$balance8+$incoming9-$forecast9;
                         
                         $forecast10=$data->fc_1;
                         $incoming10=$data->incoming_supplier_1;
                         $gr10=$data->gr_aisin_1;
-                        $balance10=$balance9+$incoming10-$gr10;
+                        $balance10=$balance9+$incoming10-$forecast10;
                         
                         $forecast11=$data->fc_2;
                         $incoming11=$data->incoming_supplier_2;
                         $gr11=$data->gr_aisin_2;
-                        $balance11=$balance10+$incoming11-$gr11;
+                        $balance11=$balance10+$incoming11-$forecast11;
                         
                         $forecast12=$data->fc_3;
                         $incoming12=$data->incoming_supplier_3;
                         $gr12=$data->gr_aisin_3;
-                        $balance12=$balance11+$incoming12-$gr12;
+                        $balance12=$balance11+$incoming12-$forecast12;
 
                       @endphp
                       

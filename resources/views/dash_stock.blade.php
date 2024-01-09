@@ -67,7 +67,7 @@
                         $forecast = $forecasts[$i];
                         $incoming = $incomings[$i];
                         $gr = $grs[$i];
-                        $balance = $balances[$i] + $incoming - $gr;
+                        $balance = $balances[$i] + $incoming - $forecast;
                         
                         // Store the balance in an array for future reference
                         $balances[] = $balance;
