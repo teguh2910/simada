@@ -11,11 +11,10 @@ class stockController extends Controller
     {
         // Assuming $data is the variable you want to pass to the view
         $data = \DB::table('stocks')
-        ->rightjoin('fcs', 'stocks.pn_after', '=', 'fcs.pn_after')
-        ->rightjoin('gr_aisins', 'stocks.pn_after', '=', 'gr_aisins.pn_after')
-        ->rightjoin('incoming_suppliers', 'stocks.pn_after', '=', 'incoming_suppliers.pn_after')
+        ->join('fcs', 'stocks.pn_after', '=', 'fcs.pn_after')
+        ->join('gr_aisins', 'stocks.pn_after', '=', 'gr_aisins.pn_after')
+        ->join('incoming_suppliers', 'stocks.pn_after', '=', 'incoming_suppliers.pn_after')
         ->select('stocks.*', 'fcs.*', 'gr_aisins.*', 'incoming_suppliers.*')
-        //->groupBy('stocks.pn_after')
         ->get();
         //dd($data);
         return view('dash_stock', compact('data'));
