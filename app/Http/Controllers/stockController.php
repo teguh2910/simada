@@ -21,6 +21,7 @@ class stockController extends Controller
             $join->on('stocks.pn_after', '=', 'latest_incoming_suppliers.pn_after');
         })
         ->select('stocks.*', 'latest_fcs.*', 'latest_gr_aisins.*', 'latest_incoming_suppliers.*')
+        ->groupBy('stocks.pn_after', 'stocks.id_stock','stocks.supplier','stocks.pn_before','stocks.part_name','stocks.activity','stocks.stock','stocks.created_at','stocks.updated_at')
         ->get();
     
 
