@@ -11,9 +11,9 @@ class stockController extends Controller
     {
         // Assuming $data is the variable you want to pass to the view
         $data = \DB::table('stocks')
-        ->leftjoin('fcs', 'stocks.pn_after', '=', 'fcs.pn_after')
-        ->leftjoin('gr_aisins', 'stocks.pn_after', '=', 'gr_aisins.pn_after')
-        ->leftjoin('incoming_suppliers', 'stocks.pn_after', '=', 'incoming_suppliers.pn_after')
+        ->rightjoin('fcs', 'stocks.pn_after', '=', 'fcs.pn_after')
+        ->rightjoin('gr_aisins', 'stocks.pn_after', '=', 'gr_aisins.pn_after')
+        ->rightjoin('incoming_suppliers', 'stocks.pn_after', '=', 'incoming_suppliers.pn_after')
         ->select('stocks.*', 'fcs.*', 'gr_aisins.*', 'incoming_suppliers.*')
         //->groupBy('stocks.pn_after')
         ->get();
