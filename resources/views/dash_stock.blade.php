@@ -44,6 +44,7 @@
                     <th>Supplier</th>
                     <th>P/N Before</th>
                     <th>P/N After</th>
+                    <th>Activity</th>
                     <th>Part Name</th>
                     <th>Shortage</th>
                     <th></th>                    
@@ -56,6 +57,7 @@
                     <td>{{$item->supplier}}</td>
                     <td>{{$item->pn_before}}</td>
                     <td>{{$item->pn_after}}</td>
+                    <td>{{$item->activity}}</td>
                     <td>{{$item->part_name}}</td>
                     <td>@php
                         $stok1 = $item->stock;      
