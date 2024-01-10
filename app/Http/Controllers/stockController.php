@@ -60,7 +60,8 @@ class stockController extends Controller
                     $stock->save();
                 }
                 });                
-            }elseif ($request->hasFile('data_fc')) {
+            }
+            if ($request->hasFile('data_fc')) {
                 // Get the uploaded file
                 $file = $request->file('data_fc');
                 // Process the Excel file
@@ -91,7 +92,8 @@ class stockController extends Controller
                         $fc->save();
                     }
                     });                
-                }elseif ($request->hasFile('gr_aisin')) {
+                }
+                if ($request->hasFile('gr_aisin')) {
                     // Get the uploaded file
                     $file = $request->file('gr_aisin');
                     // Process the Excel file
@@ -122,7 +124,8 @@ class stockController extends Controller
                             $gr_aisin->save();
                         }
                         });                
-                    }elseif ($request->hasFile('incoming_supplier')) {
+                    }
+                    if ($request->hasFile('incoming_supplier')) {
                         // Get the uploaded file
                         $file = $request->file('incoming_supplier');
                         // Process the Excel file
