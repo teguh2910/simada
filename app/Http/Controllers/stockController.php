@@ -11,11 +11,19 @@ class stockController extends Controller
     {
         // Assuming $data is the variable you want to pass to the view
         $data = \DB::table('stocks')
-        ->join('fcs', 'stocks.pn_after', '=', 'fcs.pn_after')
-        ->join('gr_aisins', 'stocks.pn_after', '=', 'gr_aisins.pn_after')
-        ->join('incoming_suppliers', 'stocks.pn_after', '=', 'incoming_suppliers.pn_after')
-        ->select('stocks.*', 'fcs.*', 'gr_aisins.*', 'incoming_suppliers.*')
+        ->join(\DB::raw('(SELECT * FROM fcs ORDER BY created_at DESC) as latest_fcs'), function ($join) {
+            $join->on('stocks.pn_after', '=', 'latest_fcs.pn_after');
+        })
+        ->join(\DB::raw('(SELECT * FROM gr_aisins ORDER BY created_at DESC) as latest_gr_aisins'), function ($join) {
+            $join->on('stocks.pn_after', '=', 'latest_gr_aisins.pn_after');
+        })
+        ->join(\DB::raw('(SELECT * FROM incoming_suppliers ORDER BY created_at DESC) as latest_incoming_suppliers'), function ($join) {
+            $join->on('stocks.pn_after', '=', 'latest_incoming_suppliers.pn_after');
+        })
+        ->select('stocks.*', 'latest_fcs.*', 'latest_gr_aisins.*', 'latest_incoming_suppliers.*')
         ->get();
+    
+
         //dd($data);
         return view('dash_stock', compact('data'));
     }
