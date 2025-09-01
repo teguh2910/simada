@@ -10,7 +10,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          @if(\auth::user()->dept=='MIM'||\auth::user()->dept=='NPL')
+          @if(auth()->user()->dept=='MIM'||auth()->user()->dept=='NPL')
           <li class="nav-item">
             <a href="{{asset('dashboard')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -19,14 +19,7 @@
               </p>
             </a>
           </li> 
-          <li class="nav-item">
-            <a href="{{asset('stock')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Stock                
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="{{asset('create')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -52,7 +45,7 @@
               </p>
             </a>
           </li>
-          @if(\auth::user()->dept=='MIM'||\auth::user()->dept=='NPL')
+          @if(auth()->user()->dept=='MIM'||auth()->user()->dept=='NPL')
         <li class="nav-item">
             <a href="{{asset('/overdue')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>              

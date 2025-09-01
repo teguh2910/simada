@@ -18,9 +18,3 @@ Route::get('/overdue', 'HomeController@overdue');
 Route::get('/del/{id}', 'HomeController@del');
 Route::get('/noneed/{id}', 'HomeController@noneed');
 Route::get('/dashboard', 'HomeController@dashboard');
-
-//new feature stock
-Route::get('/stock', 'stockController@index');
-Route::get('/stock/{id}', 'stockController@view_stock');
-Route::get('/upload_stock', 'stockController@upload_stock');
-Route::post('/upload_stock', 'stockController@store_upload_stock');

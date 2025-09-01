@@ -65,7 +65,7 @@
                         <a href="feedback/{{$row->id_transaction}}" class="btn btn-xs btn-success">Feedback</a>
                         <a href="viewfeedback/{{$row->id_transaction}}" class="btn btn-xs btn-info">View Feedback</a>
                         <a href="{{asset('storage/'.$row->file)}}" class="btn btn-xs btn-success">View Doc</a>
-                        @if(\auth::user()->dept=='MIM'||\auth::user()->dept=='NPL')
+                        @if(auth()->user()->dept=='MIM'||auth()->user()->dept=='NPL')
                         <a href="revise/{{$row->id_transaction}}" class="btn btn-xs btn-warning">Revise</a>
                         <a href="final/{{$row->id_transaction}}" class="btn btn-xs btn-primary">Final</a>
                         <a href="del/{{$row->id_transaction}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Del</a>

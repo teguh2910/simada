@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class incoming_supplier extends Model
+class komentar extends Model
 {
     //
 }

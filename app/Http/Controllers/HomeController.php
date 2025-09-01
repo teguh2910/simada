@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\transaction;
-use App\komentar;
-use Auth;
+use App\Models\transaction;
+use App\Models\komentar;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -85,6 +85,7 @@ class HomeController extends Controller
         ->whereNull('file')
         ->where('is_need',1)
         ->get();
+        dd('hi');
         return view('home',compact('data'));
     }
     public function upload($id)

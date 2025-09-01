@@ -21,11 +21,11 @@ class Createtabletransaksi extends Migration
             $table->string('part_number');
             $table->string('status');
             $table->string('id_document');
-            $table->string('file');
-            $table->string('revise');
-            $table->string('pic');
-            $table->string('npk');
-            $table->string('is_need');
+            $table->string('file')->nullable();
+            $table->string('revise')->nullable();
+            $table->string('pic')->nullable();
+            $table->string('npk')->nullable();
+            $table->string('is_need')->default('1');
             $table->timestamps();
         });
     }
