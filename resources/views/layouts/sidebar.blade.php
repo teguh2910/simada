@@ -12,7 +12,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                @if (auth()->user()->dept == 'MIM' || auth()->user()->dept == 'NPL')
+                @admin
                     <li class="nav-item">
                         <a href="{{ asset('dashboard') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -22,6 +22,7 @@
                         </a>
                     </li>
 
+                    @canAccess('access-sptt')
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-folder"></i>
@@ -63,7 +64,9 @@
                             </li>
                         </ul>
                     </li>
+                    @endcanAccess
 
+                    @canAccess('access-pcr-apr')
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-folder-open"></i>
@@ -99,7 +102,9 @@
                             </li>
                         </ul>
                     </li>
+                    @endcanAccess
                 @else
+                    @canAccess('access-draft')
                     <li class="nav-item">
                         <a href="{{ asset('/draft') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -108,6 +113,9 @@
                             </p>
                         </a>
                     </li>
+                    @endcanAccess
+
+                    @canAccess('access-final')
                     <li class="nav-item">
                         <a href="{{ asset('/final') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -116,7 +124,8 @@
                             </p>
                         </a>
                     </li>
-                @endif
+                    @endcanAccess
+                @endadmin
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

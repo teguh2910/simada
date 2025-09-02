@@ -39,4 +39,71 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Check if user has admin privileges (MIM or NPL department)
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return in_array($this->dept, ['MIM', 'NPL']);
+    }
+
+    /**
+     * Check if user has specific department
+     *
+     * @param string $department
+     * @return bool
+     */
+    public function hasDepartment(string $department): bool
+    {
+        return $this->dept === $department;
+    }
+
+    /**
+     * Check if user can access SPTT features
+     *
+     * @return bool
+     */
+    public function canAccessSPTT(): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Check if user can access PCR/APR features
+     *
+     * @return bool
+     */
+    public function canAccessPCRAPR(): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Check if user can access dashboard
+     *
+     * @return bool
+     */
+    public function canAccessDashboard(): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Get user role display name
+     *
+     * @return string
+     */
+    public function getRoleDisplayName(): string
+    {
+        $roles = [
+            'MIM' => 'Management Information Manager',
+            'NPL' => 'Network Planning',
+            'default' => 'User'
+        ];
+
+        return $roles[$this->dept] ?? $roles['default'];
+    }
 }
