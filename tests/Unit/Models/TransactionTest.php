@@ -7,12 +7,13 @@ use App\Models\Transaction;
 use App\Models\Document;
 use App\Models\Komentar;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TransactionTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $transaction = Transaction::factory()->create();
@@ -24,7 +25,7 @@ class TransactionTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_belongs_to_document()
     {
         $document = Document::factory()->create();
@@ -34,7 +35,7 @@ class TransactionTest extends TestCase
         $this->assertEquals($document->id, $transaction->document->id);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_many_komentars()
     {
         $transaction = Transaction::factory()->create();
@@ -45,7 +46,7 @@ class TransactionTest extends TestCase
         $this->assertInstanceOf(Komentar::class, $transaction->komentars->first());
     }
     
-    /** @test */
+    #[Test]
     public function it_has_casts()
     {
         $transaction = new Transaction();
@@ -56,7 +57,7 @@ class TransactionTest extends TestCase
         $this->assertEquals('boolean', $transaction->getCasts()['is_need']);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_fillable_attributes()
     {
         $transaction = new Transaction();

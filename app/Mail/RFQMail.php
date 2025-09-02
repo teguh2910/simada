@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\RFQ;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Storage;
 
 class RFQMail extends Mailable
 {
@@ -63,11 +64,10 @@ class RFQMail extends Mailable
         // Attach RFQ files if they exist
         if ($this->rfq->attachments) {
             foreach ($this->rfq->attachments as $attachment) {
-                $filePath = storage_path('app/public/' . $attachment['path']);
-                if (file_exists($filePath)) {
-                    $attachments[] = \Illuminate\Mail\Mailables\Attachment::fromPath($filePath)
-                        ->as($attachment['original_name']);
-                }
+                // Resolve path using Storage so Storage::fake works in tests
+                $filePath = Storage::disk('public')->path($attachment['path']);
+                $attachments[] = \Illuminate\Mail\Mailables\Attachment::fromPath($filePath)
+                    ->as($attachment['original_name']);
             }
         }
 

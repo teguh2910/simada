@@ -49,12 +49,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($data as $row)
+                  @foreach($data->komentars as $row)
                   <tr class="bg-default">                    
                     <td>{{$row->komentar}}</td>
-                    <td>{{$row->kinds_doc}}</td>
-                    <td>{{$row->documents}}</td>
-                    <td>{{$row->revise}}</td>
+                    <td>{{$data->document->kinds_doc ?? 'N/A'}}</td>
+                    <td>{{$data->document->documents ?? 'N/A'}}</td>
+                    <td>{{$data->revise}}</td>
                     <td>{{$row->pic_k}}</td>
                     <td>{{$row->npk_k}}</td>
                     <td>{{$row->dep_k}}</td>                                        

@@ -6,12 +6,13 @@ use Tests\TestCase;
 use App\Models\Document;
 use App\Models\Transaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class DocumentTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $document = Document::factory()->create();
@@ -23,7 +24,7 @@ class DocumentTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_many_transactions()
     {
         $document = Document::factory()->create();
@@ -34,7 +35,7 @@ class DocumentTest extends TestCase
         $this->assertInstanceOf(Transaction::class, $document->transactions->first());
     }
     
-    /** @test */
+    #[Test]
     public function it_has_fillable_attributes()
     {
         $document = new Document();

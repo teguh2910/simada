@@ -9,12 +9,13 @@ use App\Models\Supplier;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RFQTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $rfq = RFQ::factory()->create();
@@ -26,7 +27,7 @@ class RFQTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_belongs_to_creator()
     {
         $user = User::factory()->create();
@@ -36,7 +37,7 @@ class RFQTest extends TestCase
         $this->assertEquals($user->id, $rfq->creator->id);
     }
     
-    /** @test */
+    #[Test]
     public function it_belongs_to_many_suppliers()
     {
         $rfq = RFQ::factory()->create();
@@ -52,7 +53,7 @@ class RFQTest extends TestCase
         $this->assertInstanceOf(Supplier::class, $rfq->suppliers->first());
     }
     
-    /** @test */
+    #[Test]
     public function it_has_draft_and_sent_states()
     {
         $draftRfq = RFQ::factory()->draft()->create();
@@ -65,7 +66,7 @@ class RFQTest extends TestCase
         $this->assertNotNull($sentRfq->sent_at);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_casts()
     {
         $rfq = new RFQ();
@@ -75,7 +76,7 @@ class RFQTest extends TestCase
         $this->assertEquals('array', $rfq->getCasts()['attachments']);
     }
     
-    /** @test */
+    #[Test]
     public function it_stores_attachments()
     {
         Storage::fake('public');
@@ -91,7 +92,7 @@ class RFQTest extends TestCase
         Storage::disk('public')->assertExists($attachment['path']);
     }
     
-    /** @test */
+    #[Test]
     public function it_gets_attachment_paths()
     {
         Storage::fake('public');

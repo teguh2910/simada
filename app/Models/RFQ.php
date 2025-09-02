@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Storage;
 
 class RFQ extends Model
 {
@@ -77,9 +78,9 @@ class RFQ extends Model
 
         if ($this->attachments) {
             foreach ($this->attachments as $attachment) {
-                $fullPath = storage_path('app/public/' . $attachment['path']);
-                if (file_exists($fullPath)) {
-                    $paths[] = $fullPath;
+                // Use Storage disk so Storage::fake('public') in tests works
+                if (Storage::disk('public')->exists($attachment['path'])) {
+                    $paths[] = Storage::disk('public')->path($attachment['path']);
                 }
             }
         }

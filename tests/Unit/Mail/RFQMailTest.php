@@ -7,12 +7,13 @@ use App\Mail\RFQMail;
 use App\Models\RFQ;
 use App\Models\Supplier;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RFQMailTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function rfq_mail_has_correct_content()
     {
         $rfq = RFQ::factory()->create([
@@ -29,13 +30,15 @@ class RFQMailTest extends TestCase
 
         $mail = new RFQMail($rfq, $supplier);
 
-        $mail->assertSeeInHtml($rfq->title);
-        $mail->assertSeeInHtml($rfq->description);
-        $mail->assertSeeInHtml($supplier->name);
-        $mail->assertSeeInHtml($rfq->due_date->format('Y-m-d'));
+        $rendered = $mail->render();
+
+        $this->assertStringContainsString($rfq->title, $rendered);
+        $this->assertStringContainsString($rfq->description, $rendered);
+        $this->assertStringContainsString($supplier->name, $rendered);
+        $this->assertStringContainsString($rfq->due_date->format('d F Y'), $rendered);
     }
 
-    /** @test */
+    #[Test]
     public function rfq_mail_has_correct_subject()
     {
         $rfq = RFQ::factory()->create([
@@ -47,10 +50,10 @@ class RFQMailTest extends TestCase
 
         $mail = new RFQMail($rfq, $supplier);
 
-        $this->assertEquals('Request for Quotation: Test RFQ Title', $mail->subject);
+        $this->assertEquals('Request for Quotation: Test RFQ Title', $mail->envelope()->subject);
     }
 
-    /** @test */
+    #[Test]
     public function rfq_mail_includes_attachments_if_present()
     {
         $rfq = RFQ::factory()->create();

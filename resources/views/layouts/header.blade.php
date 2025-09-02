@@ -19,10 +19,14 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <marquee class="warna">
-        Welcome <b>  {{ auth()->user()->name }} // 
-        </b> Email <b>  {{ auth()->user()->email }} </b> //
-        Dept <b> {{ auth()->user()->dept }} </b> // 
-        NPK <b> {{ auth()->user()->npk }} </b>
+        @auth
+          Welcome <b>  {{ auth()->user()->name }} // </b>
+          Email <b>  {{ auth()->user()->email }} </b> //
+          Dept <b> {{ auth()->user()->dept }} </b> // 
+          NPK <b> {{ auth()->user()->npk }} </b>
+        @else
+          Welcome <b>Guest</b>
+        @endauth
       </marquee>
       </li>      
     </ul>

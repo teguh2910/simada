@@ -6,12 +6,13 @@ use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function login_page_can_be_rendered()
     {
         $response = $this->get('/login');
@@ -19,7 +20,7 @@ class LoginTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function users_can_authenticate()
     {
         $user = User::factory()->create([
@@ -36,7 +37,7 @@ class LoginTest extends TestCase
         $response->assertRedirect('/home');
     }
 
-    /** @test */
+    #[Test]
     public function users_can_not_authenticate_with_invalid_password()
     {
         $user = User::factory()->create([
@@ -52,7 +53,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    /** @test */
+    #[Test]
     public function users_can_logout()
     {
         $user = User::factory()->create();

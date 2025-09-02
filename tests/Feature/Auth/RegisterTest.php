@@ -5,12 +5,13 @@ namespace Tests\Feature\Auth;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function registration_page_can_be_rendered()
     {
         $response = $this->get('/register');
@@ -18,7 +19,7 @@ class RegisterTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function new_users_can_register()
     {
         $response = $this->post('/register', [
@@ -40,7 +41,7 @@ class RegisterTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function email_must_be_unique_for_registration()
     {
         $user = User::factory()->create([
@@ -60,7 +61,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    /** @test */
+    #[Test]
     public function password_must_be_confirmed_for_registration()
     {
         $response = $this->post('/register', [

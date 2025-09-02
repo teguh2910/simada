@@ -27,4 +27,15 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    /**
+     * Prepare the test environment.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Disable CSRF middleware for tests to avoid 419 responses when posting forms.
+        $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
+    }
 }

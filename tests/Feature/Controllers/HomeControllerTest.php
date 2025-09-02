@@ -10,12 +10,13 @@ use App\Models\Komentar;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
     
-    /** @test */
+    #[Test]
     public function guests_cannot_access_protected_pages()
     {
         $this->get('/dashboard')->assertRedirect('/login');
@@ -25,7 +26,7 @@ class HomeControllerTest extends TestCase
         $this->get('/overdue')->assertRedirect('/login');
     }
     
-    /** @test */
+    #[Test]
     public function users_can_view_dashboard()
     {
         $user = User::factory()->create();
@@ -35,7 +36,7 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_view_create_form()
     {
         $user = User::factory()->create();
@@ -45,7 +46,7 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_store_new_transaction()
     {
         Storage::fake('public');
@@ -63,7 +64,9 @@ class HomeControllerTest extends TestCase
             'npk' => $user->npk,
         ];
         
-        $response = $this->actingAs($user)->post('/create', $transactionData);
+        $response = $this->actingAs($user)
+            ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class)
+            ->post('/create', $transactionData);
         
         $response->assertRedirect();
         $this->assertDatabaseHas('transactions', [
@@ -72,7 +75,7 @@ class HomeControllerTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_view_draft_transactions()
     {
         $user = User::factory()->create();
@@ -84,7 +87,7 @@ class HomeControllerTest extends TestCase
         $response->assertSee($transaction->project);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_view_final_transactions()
     {
         $user = User::factory()->create();
@@ -109,7 +112,7 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_upload_file_to_transaction()
     {
         Storage::fake('public');
@@ -127,7 +130,7 @@ class HomeControllerTest extends TestCase
         $this->assertStringContainsString('updated_doc.pdf', $updatedTransaction->file);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_revise_transaction()
     {
         $user = User::factory()->create();
@@ -138,7 +141,7 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_store_transaction_revisions()
     {
         Storage::fake('public');
@@ -156,7 +159,7 @@ class HomeControllerTest extends TestCase
         $this->assertEquals(1, $updatedTransaction->revise);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_provide_feedback_on_transaction()
     {
         $user = User::factory()->create();
@@ -167,7 +170,7 @@ class HomeControllerTest extends TestCase
         $response->assertStatus(200);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_store_feedback_on_transaction()
     {
         $user = User::factory()->create();
@@ -189,7 +192,7 @@ class HomeControllerTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_view_transaction_feedback()
     {
         $user = User::factory()->create();
@@ -202,7 +205,7 @@ class HomeControllerTest extends TestCase
         $response->assertSee($komentar->komentar);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_mark_transaction_as_final()
     {
         $user = User::factory()->create();
@@ -215,7 +218,7 @@ class HomeControllerTest extends TestCase
         $this->assertEquals(2, $updatedTransaction->status); // Assuming 2 is final status
     }
     
-    /** @test */
+    #[Test]
     public function users_can_mark_transaction_as_not_needed()
     {
         $user = User::factory()->create();
@@ -228,7 +231,7 @@ class HomeControllerTest extends TestCase
         $this->assertFalse($updatedTransaction->is_need);
     }
     
-    /** @test */
+    #[Test]
     public function users_can_delete_transaction()
     {
         $user = User::factory()->create();

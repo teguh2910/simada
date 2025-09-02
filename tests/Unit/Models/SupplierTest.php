@@ -6,12 +6,13 @@ use Tests\TestCase;
 use App\Models\Supplier;
 use App\Models\RFQ;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class SupplierTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $supplier = Supplier::factory()->create();
@@ -23,7 +24,7 @@ class SupplierTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_can_be_active_or_inactive()
     {
         $activeSupplier = Supplier::factory()->active()->create();
@@ -33,7 +34,7 @@ class SupplierTest extends TestCase
         $this->assertFalse($inactiveSupplier->is_active);
     }
     
-    /** @test */
+    #[Test]
     public function it_belongs_to_many_rfqs()
     {
         $supplier = Supplier::factory()->create();
@@ -45,7 +46,7 @@ class SupplierTest extends TestCase
         $this->assertInstanceOf(RFQ::class, $supplier->rfqs->first());
     }
     
-    /** @test */
+    #[Test]
     public function it_has_fillable_attributes()
     {
         $supplier = new Supplier();
@@ -60,7 +61,7 @@ class SupplierTest extends TestCase
         ], $supplier->getFillable());
     }
     
-    /** @test */
+    #[Test]
     public function it_has_casts()
     {
         $supplier = new Supplier();

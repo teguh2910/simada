@@ -6,12 +6,13 @@ use Tests\TestCase;
 use App\Models\Komentar;
 use App\Models\Transaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class KomentarTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $komentar = Komentar::factory()->create();
@@ -23,7 +24,7 @@ class KomentarTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_belongs_to_transaction()
     {
         $transaction = Transaction::factory()->create();
@@ -33,7 +34,7 @@ class KomentarTest extends TestCase
         $this->assertEquals($transaction->id_transaction, $komentar->transaction->id_transaction);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_fillable_attributes()
     {
         $komentar = new Komentar();
@@ -47,7 +48,7 @@ class KomentarTest extends TestCase
         ], $komentar->getFillable());
     }
     
-    /** @test */
+    #[Test]
     public function it_uses_correct_table_and_primary_key()
     {
         $komentar = new Komentar();

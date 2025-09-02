@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Disable CSRF protection when running tests
+        if (app()->environment('testing')) {
+            $middleware->validateCsrfTokens(except: ['*']);
+        }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

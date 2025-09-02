@@ -5,12 +5,13 @@ namespace Tests\Unit\Models;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 
 class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function it_can_be_created_with_factory()
     {
         $user = User::factory()->create();
@@ -21,7 +22,7 @@ class UserTest extends TestCase
         ]);
     }
     
-    /** @test */
+    #[Test]
     public function it_can_check_if_user_is_admin()
     {
         $adminMIM = User::factory()->create(['dept' => 'MIM']);
@@ -33,7 +34,7 @@ class UserTest extends TestCase
         $this->assertFalse($regularUser->isAdmin());
     }
     
-    /** @test */
+    #[Test]
     public function it_hides_sensitive_attributes()
     {
         $user = User::factory()->create();
@@ -43,7 +44,7 @@ class UserTest extends TestCase
         $this->assertArrayNotHasKey('remember_token', $userArray);
     }
     
-    /** @test */
+    #[Test]
     public function it_has_fillable_attributes()
     {
         $user = new User();
