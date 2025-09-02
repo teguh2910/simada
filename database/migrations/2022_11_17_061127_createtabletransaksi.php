@@ -19,14 +19,16 @@ class Createtabletransaksi extends Migration
             $table->date('due_date');
             $table->string('supplier');
             $table->string('part_number');
-            $table->string('status');
-            $table->string('id_document');
+            $table->integer('status')->default(0);
+            $table->unsignedInteger('id_document');
             $table->string('file')->nullable();
-            $table->string('revise')->nullable();
+            $table->integer('revise')->default(0);
             $table->string('pic')->nullable();
             $table->string('npk')->nullable();
-            $table->string('is_need')->default('1');
+            $table->boolean('is_need')->default(true);
             $table->timestamps();
+
+            $table->foreign('id_document')->references('id')->on('documents');
         });
     }
 
