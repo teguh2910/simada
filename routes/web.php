@@ -22,3 +22,8 @@ Route::get('/overdue', [HomeController::class, 'overdue'])->name('overdue');
 Route::get('/del/{id}', [HomeController::class, 'del'])->name('del');
 Route::get('/noneed/{id}', [HomeController::class, 'noneed'])->name('noneed');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
+// RFQ Routes
+Route::resource('rfq', App\Http\Controllers\RFQController::class);
+Route::get('/rfq/{rfq}/select-suppliers', [App\Http\Controllers\RFQController::class, 'selectSuppliers'])->name('rfq.select-suppliers');
+Route::post('/rfq/{rfq}/select-suppliers', [App\Http\Controllers\RFQController::class, 'storeSuppliers'])->name('rfq.store-suppliers');

@@ -1,0 +1,3 @@
+# This file serves as a placeholder for the default-supplier.png image
+# In a real implementation, you would place an actual image file here
+# For now, this ensures the image reference in the views doesn't break

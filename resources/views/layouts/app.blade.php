@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+  <!-- Custom RFQ Styles -->
+  <link rel="stylesheet" href="{{asset('css/rfq-custom.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

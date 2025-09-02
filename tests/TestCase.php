@@ -1,6 +1,8 @@
 <?php
 
-abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
+namespace Tests;
+
+abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {
     /**
      * The base URL to use while testing the application.
@@ -16,9 +18,12 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
+        require __DIR__.'/../vendor/autoload.php';
+
         $app = require __DIR__.'/../bootstrap/app.php';
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        // Bootstrap the application
+        $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
     }

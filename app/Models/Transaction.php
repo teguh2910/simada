@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
+    use HasFactory;
     protected $table = 'transactions';
     protected $primaryKey = 'id_transaction';
 
@@ -25,15 +27,12 @@ class Transaction extends Model
         'is_need',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'due_date' => 'date',
-            'status' => 'integer',
-            'revise' => 'integer',
-            'is_need' => 'boolean',
-        ];
-    }
+    protected $casts = [
+        'due_date' => 'date',
+        'status' => 'integer',
+        'revise' => 'integer',
+        'is_need' => 'boolean',
+    ];
 
     public function document(): BelongsTo
     {

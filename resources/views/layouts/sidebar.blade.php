@@ -103,6 +103,30 @@
                         </ul>
                     </li>
                     @endcanAccess
+
+                    <li class="nav-item has-treeview {{ request()->routeIs('rfq.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('rfq.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-file-invoice-dollar text-warning"></i>
+                            <p>
+                                RFQ
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('rfq.index') }}" class="nav-link {{ request()->routeIs('rfq.index') ? 'active' : '' }}">
+                                    <i class="far fa-list-alt nav-icon text-info"></i>
+                                    <p>All RFQs</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('rfq.create') }}" class="nav-link {{ request()->routeIs('rfq.create') ? 'active' : '' }}">
+                                    <i class="far fa-plus-square nav-icon text-success"></i>
+                                    <p>Create New RFQ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 @else
                     @canAccess('access-draft')
                     <li class="nav-item">
